@@ -1,59 +1,86 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void bispoRecursivo(int n)
+{
+    if (n > 0)
+    {
+        printf("Cima, Direita\n");
+        bispoRecursivo(n - 1);
+    }
+}
+
+void bispoLoopAninhado(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("Cima, \n");
+        for (int j = 0; j < n; j++)
+        {
+            printf("Direita.\n");
+            break;
+        }
+    }
+}
+
+
+void torre(int n)
+{
+    if (n > 0) {
+        printf("Direita\n");
+        torre(n - 1);
+    }
+}
+
+void rainha(int n)
+{
+    if (n > 0)
+    {
+        printf("Esquerda\n");
+        rainha(n - 1);
+    }
+}
+
+void cavalo()
+// Simplifiquei as variáveis
+{
+    int x = 1, y = 2;
+    for (x; x > 0; x--)
+    {
+        for (y; y > 0; y--)
+        {
+            printf("Cima\n");
+        }
+        printf("Direita\n");
+        x--;
+    }
+}
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-    int contador, casasTorre = 5, casasBispo = 5, casasRainha = 8;
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    // Quantidade de casas para cada peça
+    int casasTorre = 5, casasBispo = 5, casasRainha = 8;
+
+    // BISPO 
     printf("Bispo - cinco casas para a diagonal direita para frente...\n");
-    for (contador = 1; contador <= casasBispo; contador++){
-        printf("Cima, Direita\n");
-    }
+    bispoRecursivo(casasBispo);
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    bispoLoopAninhado(casasBispo);
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    
+    // TORRE 
+    printf("Torre - cinco casas para a direita...\n");
+    torre(casasTorre);
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-    printf("\nTorre - cinco casas para a direita...\n");
-    while (casasTorre > 0) {
-        printf("Direita\n");
-        casasTorre--;
-    }
+    // RAINHA
+    printf("Rainha - oito casas para a esquerda...\n");
+    rainha(casasRainha);
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-    printf("\nRainha - oito casas para a esquerda...\n");
-    do {
-        printf("Esquerda\n");
-        casasRainha--;
-    } while (casasRainha > 0);
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-    printf("------------------------------------------------\n");
-    printf("Cavalo - Duas casa pra esquerda e uma para baixo.\n");
-    int cavaloPerp = 1, cavaloXY;
-    while (cavaloPerp > 0)
-    {
-        for (cavaloXY = 2; cavaloXY > 0; cavaloXY--)
-        {
-            printf("Baixo.\n");
-        }
-        printf("Esquerda.\n");
-        cavaloPerp--;
-    }
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    // CAVALO
+    printf("Cavalo - Duas casa pra cima e uma para direita.\n");
+    cavalo();
+    printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
     return 0;
 }
